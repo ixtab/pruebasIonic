@@ -1,10 +1,11 @@
+import { ListPage } from './../pages/list/list';
+import { HomePage } from './../pages/home/home';
+import { Storage } from '@ionic/storage';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,19 +13,45 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  
+
+  rootPage: any;
+  pag_inicio : number =1 ;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
+  ngOnInit() {
+    this.seleccionarInicio();
+ }
 
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public storage :Storage) {
+    
+    
+    this.initializeApp();
+    
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage }
     ];
 
+  }
+
+  seleccionarInicio(){
+    this.storage.get('inicio').then ( inicio => { this.pag_inicio = inicio;});
+    console.log( "Inicial: " + this.pag_inicio);
+
+    if (this.pag_inicio == 0){
+      this.storage.set('inicio', 1).then(a =>{
+        console.log( "si es 0 deberia ser 1: " + a + this.pag_inicio);
+        this.nav.setRoot (HomePage);});
+    }
+    else if (this.pag_inicio == 1){
+      this.storage.set('inicio', 0).then(a =>{
+      console.log( "si es 1 deberia ser 0: " + a + this.pag_inicio);
+      this.nav.setRoot (ListPage);});
+      
+    }
   }
 
   initializeApp() {
@@ -36,9 +63,9 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
+ openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
-  }
+ }
 }
