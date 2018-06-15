@@ -16,7 +16,7 @@ export class MyApp {
   
 
   rootPage: any;
-  pag_inicio : number =1 ;
+  pag_inicio : number = 0 ;
 
   pages: Array<{title: string, component: any}>;
 
@@ -38,20 +38,24 @@ export class MyApp {
   }
 
   seleccionarInicio(){
-    this.storage.get('inicio').then ( inicio => { this.pag_inicio = inicio;});
-    console.log( "Inicial: " + this.pag_inicio);
-
-    if (this.pag_inicio == 0){
-      this.storage.set('inicio', 1).then(a =>{
-        console.log( "si es 0 deberia ser 1: " + a + this.pag_inicio);
-        this.nav.setRoot (HomePage);});
-    }
-    else if (this.pag_inicio == 1){
-      this.storage.set('inicio', 0).then(a =>{
-      console.log( "si es 1 deberia ser 0: " + a + this.pag_inicio);
-      this.nav.setRoot (ListPage);});
+    this.storage.get('inicio').then ( inicio => { 
       
-    }
+      this.pag_inicio = inicio;
+      console.log( "Inicial: " + this.pag_inicio);
+
+      if (this.pag_inicio == 0){
+          console.log( "Núm pág Ini: "+ this.pag_inicio);
+          this.nav.setRoot (HomePage);
+          this.storage.set('inicio', 1)
+      }
+      else if (this.pag_inicio == 1){
+        console.log( "Núm pág Ini: " + this.pag_inicio);
+        this.nav.setRoot (ListPage);
+        this.storage.set('inicio', 0)
+      }
+    
+    });
+    
   }
 
   initializeApp() {
