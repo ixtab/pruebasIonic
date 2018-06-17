@@ -17,7 +17,6 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public storage: Storage) {
 
-    this.comprobar();
   }
   guardar(){
 
@@ -30,9 +29,4 @@ export class HomePage {
     this.estado = "";
     this.storage.get('texto').then ( leido => { this.texto_recibido = leido;});
   }
-
-  comprobar(){
-
-  }
-
 }

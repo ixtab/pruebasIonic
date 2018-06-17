@@ -1,5 +1,6 @@
 import { ListPage } from './../pages/list/list';
 import { HomePage } from './../pages/home/home';
+import { CalendarioPage } from './../pages/calendario/calendario';
 import { Storage } from '@ionic/storage';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
@@ -32,7 +33,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Calendario', component: CalendarioPage}
     ];
 
   }
@@ -51,9 +53,14 @@ export class MyApp {
       else if (this.pag_inicio == 1){
         console.log( "Núm pág Ini: " + this.pag_inicio);
         this.nav.setRoot (ListPage);
+        this.storage.set('inicio', 2)
+      }
+      else{
+        console.log( "Núm pág Ini: " + this.pag_inicio);
+        this.nav.setRoot (CalendarioPage);
         this.storage.set('inicio', 0)
       }
-    
+
     });
     
   }
