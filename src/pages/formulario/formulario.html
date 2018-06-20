@@ -1,0 +1,45 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Formulario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+  <form #formulario_login="ngForm" (ngSubmit)="acceder(formulario_login.value, formulario_login.valid)">
+    <div>
+      <ion-item>
+        <ion-label>Nombre</ion-label>
+        <ion-input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="login.nombre" required pattern=".{4,}"></ion-input>
+      </ion-item>
+      <small [hidden]="(!formulario_login.submitted || nombre.valid)">
+        Nombre de al menos 4 letras
+      </small>
+    </div>
+    <div>
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input type="text" #pwd="ngModel" name="pwd" [(ngModel)]="login.pwd" required></ion-input>
+      </ion-item>
+      <small [hidden]="!(formulario_login.submitted && !pwd.valid)">
+        Contraseña obligatoria
+      </small>
+    </div>
+    <div>
+      <ion-item>
+        <ion-label>Password repe</ion-label>
+        <ion-input type="text" #pwd2="ngModel" name="pwd2" [(ngModel)]="login.pwd2" required validateEqual = "pwd"></ion-input>
+      </ion-item>
+      <small [hidden]="(pwd2.valid || pwd2.pristine)">
+        Repita la misma contraseña
+      </small>
+    </div>
+    <!-- dentro del botón si se pone [disabled]=!(formulario_login.valid) no se podría utilizar directamente el botón si no están bien rellenados los campos-->
+    <button type="submit" ion-button >Acceder</button>
+  </form>
+</div>
+</ion-content>

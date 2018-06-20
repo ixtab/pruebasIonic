@@ -1,3 +1,5 @@
+
+import { FormularioPage } from './../pages/formulario/formulario';
 import { ListPage } from './../pages/list/list';
 import { HomePage } from './../pages/home/home';
 import { CalendarioPage } from './../pages/calendario/calendario';
@@ -6,6 +8,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { MapawebPage } from '../pages/mapaweb/mapaweb';
 
 
 @Component({
@@ -34,7 +37,9 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Calendario', component: CalendarioPage}
+      { title: 'Calendario', component: CalendarioPage},
+      { title: 'Formulario', component: FormularioPage},
+      { title: 'Mapa', component: MapawebPage}
     ];
 
   }
@@ -55,9 +60,14 @@ export class MyApp {
         this.nav.setRoot (ListPage);
         this.storage.set('inicio', 2)
       }
-      else{
+      else if (this.pag_inicio == 2){
         console.log( "Núm pág Ini: " + this.pag_inicio);
         this.nav.setRoot (CalendarioPage);
+        this.storage.set('inicio', 3)
+      }
+      else{
+        console.log( "Núm pág Ini: " + this.pag_inicio);
+        this.nav.setRoot (FormularioPage);
         this.storage.set('inicio', 0)
       }
 

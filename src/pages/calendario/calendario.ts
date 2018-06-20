@@ -1,18 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { NgCalendarModule  } from 'ionic2-calendar';
+
 
 
 @Component({
-  selector: 'calendario-list',
+  selector: 'calendario',
   templateUrl: 'calendario.html'
 })
 export class CalendarioPage {
 
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-         public NgCalendarModule: NgCalendarModule) {
-    
+  fecha = new Date();
+  hora: any;
+  minutos: any;
+  array : any = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.hora  = this.fecha.getHours();
+    this.minutos  = this.fecha.getMinutes();
+    for (var i = 0; i < 2000; i++){
+    this.array.push(i);
+    }
   }
-  
 }

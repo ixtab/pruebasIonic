@@ -8,14 +8,12 @@
 </ion-header>
 
 <ion-content>
-  <calendar [eventSource]="eventSource"
-  [calendarMode]="calendar.mode"
-  [currentDate]="calendar.currentDate"
-  (onCurrentDateChanged)="onCurrentDateChanged($event)"
-  (onRangeChanged)="reloadSource(startTime, endTime)"
-  (onEventSelected)="onEventSelected($event)"
-  (onTitleChanged)="onViewTitleChanged($event)"
-  (onTimeSelected)="onTimeSelected($event)"
-  step="30">
-  </calendar>
+  <ion-item>
+    <p>{{hora}}:{{minutos}}</p>
+  </ion-item>
+
+  <ion-list [virtualScroll]="array">
+    <ion-item *virtualItem="let arr">{{arr}}</ion-item>
+  </ion-list> 
+
 </ion-content>
