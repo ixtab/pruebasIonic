@@ -1,3 +1,4 @@
+import { FotoCam } from '../pages/fotocam/fotocam';
 
 
 import { EqualValidator } from './validatorpwd.directive';
@@ -13,6 +14,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { CalendarioPage } from '../pages/calendario/calendario';
 import { FormularioPage } from '../pages/formulario/formulario';
+
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -32,7 +34,8 @@ import { MapawebPage } from '../pages/mapaweb/mapaweb';
     CalendarioPage, 
     FormularioPage,
     EqualValidator,   
-    MapawebPage
+    MapawebPage,
+    FotoCam
 
   ],
   imports: [
@@ -49,7 +52,8 @@ import { MapawebPage } from '../pages/mapaweb/mapaweb';
     ListPage,
     CalendarioPage,
     FormularioPage,
-    MapawebPage
+    MapawebPage,
+    FotoCam
 
   ],
   providers: [

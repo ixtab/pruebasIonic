@@ -52,6 +52,7 @@ export class MapawebPage {
     let myLatLng = {lat: latitude, lng: longitude};
 
     // create map
+    /*
     this.map = new google.maps.Map(mapEle, {
       center: myLatLng,
       mapTypeId: 'satellite',
@@ -65,7 +66,7 @@ export class MapawebPage {
         title: 'Hello World!'
       });
       mapEle.classList.add('show-map');
-    });
+    });*/
   }
   
 

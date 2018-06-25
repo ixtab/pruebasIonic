@@ -1,3 +1,4 @@
+import { FotoCam } from './../pages/fotocam/fotocam';
 
 import { FormularioPage } from './../pages/formulario/formulario';
 import { ListPage } from './../pages/list/list';
@@ -39,7 +40,8 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Calendario', component: CalendarioPage},
       { title: 'Formulario', component: FormularioPage},
-      { title: 'Mapa', component: MapawebPage}
+      { title: 'Mapa', component: MapawebPage},
+      { title: 'Camara', component: FotoCam}
     ];
 
   }
@@ -67,7 +69,7 @@ export class MyApp {
       }
       else{
         console.log( "Núm pág Ini: " + this.pag_inicio);
-        this.nav.setRoot (FormularioPage);
+        this.nav.setRoot (FotoCam);
         this.storage.set('inicio', 0)
       }
 
